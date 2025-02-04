@@ -1,0 +1,59 @@
+/* Header.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px; /* Space around the header */
+  background-color: white; /* Clean white background */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Subtle bottom border */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05); /* Light shadow for depth */
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensures it stays above other elements */
+}
+
+.header .logo {
+  font-size: 1.8rem; /* Bold logo font size */
+  font-weight: bold;
+  color: black; /* Black text color for the logo */
+  text-decoration: none; /* No underline */
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px; /* Space between navigation links */
+  align-items: center;
+}
+
+.nav-links a {
+  color: black; /* Black text color for links */
+  text-decoration: none; /* No underline */
+  font-size: 20px; /* Standard size for links */
+  font-weight: 500; /* Slightly bold text */
+  transition: color 0.3s ease; /* Smooth hover transition */
+}
+
+.nav-links a:hover {
+  color: #007bff; /* Light blue hover effect */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .nav-links a {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
