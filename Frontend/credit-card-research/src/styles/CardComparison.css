@@ -1,0 +1,46 @@
+.comparison-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .search-bar {
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .comparison-grid {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .placeholder {
+    border: 1px dashed #aaa;
+    padding: 20px;
+    text-align: center;
+    width: 250px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .search-results {
+    margin-top: 20px;
+  }
+  
+  .search-result {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .search-result:hover {
+    background-color: #f0f0f0;
+  }
+  
