@@ -10,11 +10,11 @@ const Home = () => {
   <h1>Compare the best credit cards in Canada.</h1>
   <div className="card-grid">
     <div className="card">
-      <img src="/icons/travel.png" alt="Travel" />
+    <img src="/61f7cd9467553f0004c53e76 (1).png" alt="Travel cards" />
       <p>Travel cards</p>
     </div>
     <div className="card">
-      <img src="/61f7cd9467553f0004c53e76 (1).png" alt="Cashback" />
+    <img src="/icons/no-annual.png" alt="Cash Back" />
       <p>Cash back cards</p>
     </div>
     <div className="card">
