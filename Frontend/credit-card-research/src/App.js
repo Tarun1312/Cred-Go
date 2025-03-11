@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
 import SearchResults from "./components/SearchResults";
-import Compare from "./components/Compare";
+import Compare from "./components/CardComparison";
 import Reviews from "./components/Reviews";
 import CreditCardList from "./components/CreditCardList"; // Import the dynamic component
 
