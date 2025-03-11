@@ -1,5 +1,6 @@
 // src/components/Home.js
 import React from "react";
+import { Link } from "react-router-dom";
 import "../styles/Home.css"; 
 
 const Home = () => {
@@ -7,50 +8,37 @@ const Home = () => {
     <div className="home-container">
       {/* Top Section */}
       <div className="card-section">
-  <h1>Compare the best credit cards in Canada.</h1>
-  <div className="card-grid">
-    <div className="card">
-    <img src="/61f7cd9467553f0004c53e76 (1).png" alt="Travel cards" />
-      <p>Travel cards</p>
-    </div>
-    <div className="card">
-    <img src="/icons/no-annual.png" alt="Cash Back" />
-      <p>Cash back cards</p>
-    </div>
-    <div className="card">
-      <img src="/icons/no-annual.png" alt="No Annual Fee" />
-      <p>No annual fee cards</p>
-    </div>
-    <div className="card">
-      <img src="/icons/balance-transfer.png" alt="Balance Transfer" />
-      <p>Balance transfer cards</p>
-    </div>
-    <div className="card">
-      <img src="/icons/instant-approval.png" alt="Instant Approval" />
-      <p>Instant approval cards</p>
-    </div>
-    <div className="card">
-      <img src="/icons/newcomer.png" alt="Newcomer" />
-      <p>Newcomer cards</p>
-    </div>
-    <div className="card">
-      <img src="/icons/secured.png" alt="Secured" />
-      <p>Secured cards</p>
-    </div>
-    <div className="card">
-      <img src="/icons/no-fx.png" alt="No FX Fee" />
-      <p>No FX fee cards</p>
-    </div>
-  </div>
-</div>
-
+        <h1>Compare the best credit cards in Canada.</h1>
+        <div className="card-grid">
+          <div className="card">
+            <img src="/icons/travel.png" alt="Travel" />
+            <Link to="/category/Travel">Travel Cards</Link>
+          </div>
+          <div className="card">
+            <img src="/icons/cashback.png" alt="Cash Back" />
+            <Link to="/category/CashBack">Cash Back Cards</Link>
+          </div>
+          <div className="card">
+            <img src="/icons/no-annual.png" alt="No Annual Fee" />
+            <Link to="/category/NoAnnualFee">No Annual Fee Cards</Link>
+          </div>
+          <div className="card">
+            <img src="/icons/newcomer.png" alt="Newcomer" />
+            <Link to="/category/Newcomer">Newcomer Cards</Link>
+          </div>
+          <div className="card">
+            <img src="/icons/no-fx.png" alt="No FX Fee" />
+            <Link to="/category/NoFXFee">No FX Fee Cards</Link>
+          </div>
+        </div>
+      </div>
 
       {/* Middle Section */}
       <div className="middle-section">
-        <h2>Credit card comparison</h2>
+        <h2>Credit Card Comparison</h2>
         <p>
-          Compare up to three credit cards side-by-side and customize the
-          filters to discover which offers the most rewards and perks.
+          Compare up to three credit cards side-by-side and customize the filters
+          to discover which offers the most rewards and perks.
         </p>
         <div className="expense-grid">
           <input type="text" placeholder="Monthly expenses" />

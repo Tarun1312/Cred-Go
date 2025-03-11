@@ -1,0 +1,112 @@
+.credit-card-list {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .card-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .card-container {
+    width: 80%;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+  }
+  
+  .card-info {
+    text-align: left;
+    flex: 1;
+  }
+  
+  .card-title {
+    font-size: 22px;
+    font-weight: bold;
+  }
+  
+  .rating {
+    color: gold;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .best-tag {
+    background-color: #e0f7fa;
+    color: #007bff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .highlight {
+    background-color: #fff7e6;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .reward-details {
+    font-size: 14px;
+  }
+  
+  .reward-details h4 {
+    margin: 5px 0;
+  }
+  
+  .card-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .card-actions img {
+    width: 150px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .btn-secondary {
+    background-color: white;
+    color: #007bff;
+    border: 1px solid #007bff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #e0f7fa;
+  }
+  

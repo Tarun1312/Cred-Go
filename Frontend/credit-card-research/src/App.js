@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import SearchResults from "./components/SearchResults";
 import Compare from "./components/Compare";
 import Reviews from "./components/Reviews";
+import CreditCardList from "./components/CreditCardList"; // Import the dynamic component
 
 const App = () => {
   return (
@@ -13,10 +14,11 @@ const App = () => {
       <Header />
       <div className="container mt-4">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route exact path="/" element={<Home />} />
           <Route path="/compare" element={<Compare />} />
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/search" element={<SearchResults />} />
+          <Route path="/category/:category" element={<CreditCardList />} />
         </Routes>
       </div>
       <Footer />
