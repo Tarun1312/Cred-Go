@@ -70,7 +70,7 @@ const CreditCardList = () => {
                     }} 
                   />
                   <button className="btn-primary">Go to Site</button>
-                  <button className="btn-secondary">Check Eligibility</button>
+                  
                 </div>
               </div>
             </div>
