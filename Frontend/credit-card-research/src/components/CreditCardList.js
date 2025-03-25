@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import "../styles/CreditCardList.css"; // Ensure this file exists
+import "../styles/CreditCardList.css";
+import FlipCardWithDetails from "./FlipCardWithDetails"; // Flip Card component
 
 const CreditCardList = () => {
   const { category } = useParams();
   const [cards, setCards] = useState([]);
-  const [loading, setLoading] = useState(true); // Add loading state
-  const [error, setError] = useState(null); // Add error state
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setLoading(true);
     setError(null);
-    console.log(`Fetching cards for category: ${category}`);
 
     axios
-      .get(`http://localhost:8080/api/cards/category/${category}`)
+      .get(`http://localhost:8080/api/cards/category/${encodeURIComponent(category)}`)
       .then((response) => {
-        console.log("API Response:", response.data); // ✅ Check if data is received
         setCards(response.data);
         setLoading(false);
       })
@@ -39,40 +38,7 @@ const CreditCardList = () => {
         <div className="card-grid">
           {cards.map((card) => (
             <div key={card.id} className="card-container">
-              <div className="card-content">
-                {/* Left Section - Main Info */}
-                <div className="card-info">
-                  <h2 className="card-title">{card.name}</h2>
-                  <div className="rating">
-                    ⭐⭐⭐⭐☆ <span>4.0 Ratehub rated</span>
-                  </div>
-                  <span className="best-tag">Best for {category} Points</span>
-                  <div className="highlight">
-                    <span>First Year Reward</span>
-                    <h3>${card.yearlyCost}/yr</h3>
-                    <p>Based on spending $2,200/mo after ${card.annualFee} annual fee</p>
-                  </div>
-                  <div className="reward-details">
-                    <h4>Earn Rewards</h4>
-                    <p>{card.rewards}</p>
-                    <h4>Welcome Bonus</h4>
-                    <p>{card.welcomeBonus}</p>
-                  </div>
-                </div>
-
-                {/* Right Section - Image and Button */}
-                <div className="card-actions">
-                  <img 
-                    src={card.imageUrl} 
-                    alt={card.name} 
-                    onError={(e) => { 
-                      e.target.src = "/images/placeholder.png"; // ✅ Fallback image
-                    }} 
-                  />
-                  <button className="btn-primary">Go to Site</button>
-                  
-                </div>
-              </div>
+              <FlipCardWithDetails card={card} />
             </div>
           ))}
         </div>
