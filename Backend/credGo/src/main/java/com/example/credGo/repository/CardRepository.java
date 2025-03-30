@@ -7,6 +7,14 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CardRepository extends JpaRepository<Card, Long> { // Changed to JpaRepository
-    List<Card> findByCategory(String category); // Custom query to filter by category
+public interface CardRepository extends JpaRepository<Card, Long> {
+
+    // ✅ Find all cards by category
+    List<Card> findByCategory(String category);
+
+    // ✅ Search cards by name (case-insensitive)
+    List<Card> findByNameContainingIgnoreCase(String name);
+
+    List<Card> findByFeaturedTrue();
+
 }

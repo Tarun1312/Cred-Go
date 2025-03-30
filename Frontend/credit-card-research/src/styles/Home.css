@@ -1,8 +1,8 @@
 /* General Styles */
 .home-container {
   font-family: 'Poppins', Arial, sans-serif;
-  padding: 20px;
   text-align: center;
+  overflow: hidden;  
 }
 
 /* Top Section */
@@ -14,29 +14,47 @@
 }
 
 /* Category Grid */
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
-  gap: 20px; /* Space between cards */
-  justify-items: center;
+.card-grid-row {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
-.category-card {
-  background-color: white;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  padding: 20px;
-  font-size: 1.1rem;
+.card {
+  width: 250px;
+  height: 250px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  cursor: pointer;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.2s ease-in-out;
 }
 
-.category-card:hover {
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card:hover {
   transform: translateY(-5px);
-  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* Hover shadow effect */
-  background-color: #e9ecef;
+}
+
+.card img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.card a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #007bff;
 }
 
 /* Card Section */
@@ -79,8 +97,8 @@
 }
 
 .card img {
-  width: 150px;
-  height:80px;
+  width: 170px;
+  height:100px;
   margin-bottom: 15px;
   margin-top: 15px;
 }
@@ -94,7 +112,7 @@
 .middle-section {
   margin-top: 40px;
   padding: 30px;
-  background-color: #f8fafc; /* Soft light gray for background */
+  background-color: #ffffff; /* Soft light gray for background */
   border-radius: 12px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow */
   font-family: 'Poppins', sans-serif; /* Professional font */
@@ -208,7 +226,7 @@
 
 /* Bottom Section */
 .bottom-section {
-  margin-top: 50px;
+  margin-top: 30px;
   display: flex;
   justify-content: space-around;
 }
@@ -255,10 +273,169 @@
 @media (max-width: 768px) {
   .category-grid,
   .card-grid {
-    grid-template-columns: 1fr; /* 1 card per row */
+    grid-template-columns: 1fr; 
   }
 
   .expense-grid {
     grid-template-columns: 1fr; /* 1 column for inputs */
   }
+}
+
+/* Blog + Stats Container */
+.info-section {
+  margin-top: 50px;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Blog Section */
+.blog-section h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.blog-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.blog-card {
+  width: 280px;
+  background: #f8f9fc;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+.blog-card h3 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.blog-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+.blog-card a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Stats Section */
+.stats-section {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 40px;
+  padding: 10px 0;
+  flex-wrap: wrap;
+  background: #fff;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  margin: 10px 20px;
+}
+
+.stat-icon {
+  font-size: 28px;
+  margin-right: 12px;
+  margin-bottom: 27px;
+}
+
+.stat-text {
+  text-align: left;
+}
+
+.stat-number {
+  font-size: 26px;
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: -10px;
+}
+
+.stat-label {
+  font-size: 18px;
+  color: #000000;
+}
+
+.hero-section {
+  position: relative;
+  height: 100vh;               
+  background-size: cover;       /* Ensures the image covers the section */
+  background-position: center;  /* Center the image */
+  background-attachment: fixed; /* Parallax effect */
+  background-repeat: no-repeat;
+  overflow: hidden;  
+}
+
+/* .hero-section {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  position: relative; 
+} */
+
+.hero-section::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.parallax-section {
+  height: 99vh;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+.parallax-section h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.scroll-btn {
+  font-size: 1rem;
+  background-color: white;
+  color: #007bff;
+  padding: 10px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background 0.3s;
+}
+
+.scroll-btn:hover {
+  background-color: #e6f7ff;
+}
+
+/* Section Divider Gradient */
+.section-divider {
+  height: 4px;
+  background: linear-gradient(90deg, #007bff, #00c6ff);
+  margin: 50px auto;
+  margin-bottom: -10px;
+  border-radius: 2px;
+  width: 90%;
 }

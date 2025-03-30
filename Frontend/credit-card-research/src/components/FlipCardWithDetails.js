@@ -12,19 +12,19 @@ const FlipCardWithDetails = ({ card }) => {
     if (flipped && card) {
       // Fetch perks
       axios
-        .get(`http://localhost:8080/api/perks/card/${card.id}`)
+        .get(`http://localhost:8081/api/perks/card/${card.id}`)
         .then((res) => setPerks(res.data))
         .catch((err) => console.error("Perks fetch error:", err));
 
       // Fetch pros
       axios
-        .get(`http://localhost:8080/api/cards/${card.id}/pros`)
+        .get(`http://localhost:8081/api/cards/${card.id}/pros`)
         .then((res) => setPros(res.data))
         .catch((err) => console.error("Pros fetch error:", err));
 
       // Fetch cons
       axios
-        .get(`http://localhost:8080/api/cards/${card.id}/cons`)
+        .get(`http://localhost:8081/api/cards/${card.id}/cons`)
         .then((res) => setCons(res.data))
         .catch((err) => console.error("Cons fetch error:", err));
     }
@@ -38,11 +38,23 @@ const FlipCardWithDetails = ({ card }) => {
         {/* Front Side */}
         <div className="flip-card-front">
           <div className="card-info">
-            <h2>{card.name}</h2>
-            <div className="rating">
-              ⭐⭐⭐⭐☆ <span>4.0 Ratehub rated</span>
-            </div>
+            <h2 className="card-title">{card.name}</h2>
+              <div className="rating-stars">
+                {Array.from({ length: 5 }, (_, i) => {
+                  const full = i + 1 <= Math.floor(card.rating);
+                  const half = i + 1 > card.rating && i < card.rating;
+
+                  return (
+                    <span className="star" key={i}>
+                      {full ? "★" : half ? "⯪" : "☆"}
+                    </span>
+                  );
+                })}
+                <span className="rating-text">{card.rating.toFixed(1)} Ratehub rated</span>
+              </div>
+            {card.featured && (
             <span className="best-tag">Best for {card.category} Points</span>
+            )}            
             <div className="highlight">
               <span>First Year Reward</span>
               <h3>${card.yearlyCost}/yr</h3>
@@ -60,7 +72,8 @@ const FlipCardWithDetails = ({ card }) => {
           <div className="card-image-actions">
             <img src={card.imageUrl} alt={card.name} />
             <div className="button-row">
-              <button className="btn-primary">Go to Site</button>
+              <a className="btn-primary" href={card.websiteUrl} target="_blank"
+                rel="noopener noreferrer">Go to Site</a>
               <button
                 className="btn-secondary"
                 onClick={() => setFlipped(true)}

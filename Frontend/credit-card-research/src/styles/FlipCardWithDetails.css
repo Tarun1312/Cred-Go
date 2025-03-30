@@ -1,12 +1,14 @@
 /* Flip Card Container */
 .flip-card {
   background: transparent;
-  width: 100%;
+  width: 120%;
   max-width: 1000px;
   height: 440px;
   perspective: 1000px;
   margin: 20px auto;
 }
+
+h2,h3,ul{color: black;}
 
 /* Inner Card with Flip Effect */
 .flip-card-inner {
@@ -55,15 +57,29 @@
 }
 
 .card-title {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-.rating {
-  color: #fbbf24;
+.rating-stars {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-size: 16px;
-  margin-bottom: 8px;
+  margin-top: 6px;
+}
+
+.star {
+  color: #fbbf24;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.rating-text {
+  color: #374151;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .best-tag {
@@ -84,14 +100,27 @@
   width: 100%;
 }
 
+.highlight span{
+  font-size: 20px;
+}
+
+.highlight h4{
+  font-size: 20px;
+}
+
+.highlight p{
+  font-size: 17px;
+}
+
 .reward-details h4 {
   margin-top: 10px;
   margin-bottom: 4px;
+  font-size: 20px;
 }
 
 .reward-details p {
   margin: 0 0 10px 0;
-  font-size: 14px;
+  font-size: 17px;
 }
 
 /* Right Side Image + Buttons */
@@ -126,13 +155,21 @@
 }
 
 .btn-primary {
-  background: #007bff;
+  display: inline-block;
+  background-color: #007bff;
   color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
   border: none;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
 }
 
 .btn-primary:hover {
-  background: #0056b3;
+  background-color: #0056b3;
 }
 
 .btn-secondary {
@@ -186,7 +223,8 @@
   text-align: left;
   padding: 30px;
   overflow-y: auto;        /* Make vertical scroll */
-  max-height: 100%;        /* Don't go beyond card height */
+  overflow-y: auto;
+  height: 100%;
   scroll-behavior: smooth; /* Optional: smooth scrolling */
 }
 

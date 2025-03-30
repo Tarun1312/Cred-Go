@@ -15,7 +15,7 @@ public class PerkController {
     private PerkService perkService;
 
     @GetMapping("/card/{cardId}")
-    public List<Perk> getPerksByCardId(@PathVariable Long cardId) {
+    public List<Perk> getPerksByCardId(@PathVariable("cardId") Long cardId) {
         return perkService.getPerksByCardId(cardId);
     }
 }

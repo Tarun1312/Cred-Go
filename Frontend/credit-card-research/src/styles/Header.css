@@ -1,59 +1,70 @@
-/* Header.css */
-.header {
+/* Nav Container */
+.navbar {
+  height: 90px;
+  background: #ffffff;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 20px 40px; /* Space around the header */
-  background-color: white; /* Clean white background */
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Subtle bottom border */
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05); /* Light shadow for depth */
+  justify-content: space-between;
+  padding: 0 60px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
   position: sticky;
   top: 0;
-  z-index: 1000; /* Ensures it stays above other elements */
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
 }
 
-.header .logo {
-  font-size: 1.8rem; /* Bold logo font size */
-  font-weight: bold;
-  color: black; /* Black text color for the logo */
-  text-decoration: none; /* No underline */
+/* Logo Text */
+.logo {
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
 }
 
+.logo-primary {
+  color: #007bff;
+  text-shadow: 0 0 6px rgba(0, 123, 255, 0.5);
+}
+
+.logo-secondary {
+  color: #111;
+}
+
+/* Nav Links */
 .nav-links {
   display: flex;
-  gap: 40px; /* Space between navigation links */
-  align-items: center;
+  gap: 30px;
 }
 
 .nav-links a {
-  color: black; /* Black text color for links */
-  text-decoration: none; /* No underline */
-  font-size: 20px; /* Standard size for links */
-  font-weight: 500; /* Slightly bold text */
-  transition: color 0.3s ease; /* Smooth hover transition */
+  text-decoration: none;
+  color: #333;
+  font-size: 1.4rem;
+  font-weight: 500;
+  padding: 10px 14px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
+/* Glow effect on hover */
 .nav-links a:hover {
-  color: #007bff; /* Light blue hover effect */
+  color: #007bff;
+  background-color: rgba(0, 123, 255, 0.1);
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.25);
+  transform: translateY(-2px);
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 768px) {
-  .header {
+  .navbar {
     flex-direction: column;
-    align-items: flex-start;
-    padding: 15px;
+    height: auto;
+    padding: 20px;
   }
 
   .nav-links {
     flex-direction: column;
-    gap: 10px;
-    width: 100%;
-  }
-
-  .nav-links a {
-    text-align: center;
-    width: 100%;
-    margin-bottom: 10px;
+    gap: 12px;
+    margin-top: 10px;
   }
 }

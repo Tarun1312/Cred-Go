@@ -25,4 +25,7 @@ public class Card {
     private String welcomeBonus;  // Welcome bonus details
     private String imageUrl;      // Image URL for the card
     private boolean featured;     // If the card is featured
+    @Column(name = "website_url") // ✅ Map to your SQL column name
+    private String websiteUrl;
+
 }

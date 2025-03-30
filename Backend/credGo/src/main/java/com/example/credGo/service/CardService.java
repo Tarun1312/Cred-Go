@@ -24,8 +24,18 @@ public class CardService {
         return cardRepository.findByCategory(category);
     }
 
+    // ✅ Search cards by name (used by controller)
+    public List<Card> searchCardByName(String name) {
+        return cardRepository.findByNameContainingIgnoreCase(name);
+    }
+
     // Add a new card
     public Card addCard(Card card) {
         return cardRepository.save(card);
     }
+
+    public List<Card> getFeaturedCards() {
+        return cardRepository.findByFeaturedTrue();
+    }
+
 }

@@ -15,7 +15,7 @@ const CreditCardList = () => {
     setError(null);
 
     axios
-      .get(`http://localhost:8080/api/cards/category/${encodeURIComponent(category)}`)
+      .get(`http://localhost:8081/api/cards/category/${encodeURIComponent(category)}`)
       .then((response) => {
         setCards(response.data);
         setLoading(false);

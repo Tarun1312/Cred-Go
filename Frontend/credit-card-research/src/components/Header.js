@@ -3,14 +3,17 @@ import "../styles/Header.css";
 
 const Header = () => {
   return (
-    <header className="header">
-      <div className="logo">Cred-Go</div>
-      <nav className="nav-links">
-        <a href="/">Home</a>
-        <a href="/compare">Compare</a>
-        <a href="/reviews">Reviews</a>
-      </nav>
-    </header>
+<header className="navbar">
+  <div className="logo">
+    <span className="logo-primary">Cred</span><span className="logo-secondary">Go</span>
+  </div>
+  <nav className="nav-links">
+    <a href="/">Home</a>
+    <a href="/reviews">Reviews</a>
+    <a href="/about">About</a>
+  </nav>
+</header>
+
   );
 };
 

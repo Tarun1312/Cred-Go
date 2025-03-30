@@ -9,5 +9,4 @@ public class CredGoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CredGoApplication.class, args);
 	}
-
 }
