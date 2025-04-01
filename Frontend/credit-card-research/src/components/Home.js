@@ -6,7 +6,7 @@ import axios from "axios";
 import "../styles/Home.css";
 import CreditCardComparison from "./CreditCardComparison";
 import FeaturedCarousel from "./FeaturedCarousel";
-
+import FloatingChatbotWrapper from "./FloatingChatbotWrapper";
 
 const Home = () => {
   const [values, setValues] = useState({
@@ -37,13 +37,12 @@ const Home = () => {
         })
         .catch(err => console.error("Error fetching featured cards:", err));
     };
-  
+
     fetchFeatured(); // Initial fetch
     const interval = setInterval(fetchFeatured, 5 * 60 * 1000); // refresh every 5 mins
-  
+
     return () => clearInterval(interval);
   }, []);
-  
 
   useEffect(() => {
     const counters = document.querySelectorAll(".stat-number");
@@ -76,7 +75,6 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      {/* Hero Parallax Section */}
       <div
         className="hero-section"
         style={{
@@ -84,7 +82,6 @@ const Home = () => {
         }}
       ></div>
 
-      {/* Categories Section */}
       <section className="card-section fade-in" data-aos="fade-up">
         <h2>Explore Card Categories</h2>
         <div className="card-grid-row">
@@ -106,7 +103,6 @@ const Home = () => {
 
       <div className="section-divider"></div>
 
-      {/* Educational Blog & Stats Section */}
       <section className="info-section fade-in" data-aos="fade-up">
         <div className="blog-section">
           <h2>Learn More About Credit Cards</h2>
@@ -163,7 +159,6 @@ const Home = () => {
 
       <div className="section-divider"></div>
 
-      {/* Expense Calculator Section */}
       <section className="middle-section fade-in" data-aos="fade-up">
         <h2>Credit Card Expenses Calculator</h2>
         <div className="expense-grid">
@@ -186,10 +181,12 @@ const Home = () => {
 
       <div className="section-divider"></div>
 
-      {/* Comparison Feature */}
       <section id="compare" className="bottom-section fade-in" data-aos="fade-up">
         <CreditCardComparison />
       </section>
+
+      {/* Floating Chatbot Widget */}
+      <FloatingChatbotWrapper />
     </div>
   );
 };
