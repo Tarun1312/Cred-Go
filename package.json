@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "aos": "^2.3.4",
+    "react-countup": "^6.5.3"
+  }
+}
