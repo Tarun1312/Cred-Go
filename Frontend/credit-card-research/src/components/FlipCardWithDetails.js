@@ -18,13 +18,13 @@ const FlipCardWithDetails = ({ card }) => {
 
       // Fetch pros
       axios
-        .get(`http://localhost:8081/api/cards/${card.id}/pros`)
+        .get(`http://localhost:8081/api/pros/card/${card.id}`)
         .then((res) => setPros(res.data))
         .catch((err) => console.error("Pros fetch error:", err));
 
       // Fetch cons
       axios
-        .get(`http://localhost:8081/api/cards/${card.id}/cons`)
+        .get(`http://localhost:8081/api/cons/card/${card.id}`)
         .then((res) => setCons(res.data))
         .catch((err) => console.error("Cons fetch error:", err));
     }
@@ -39,22 +39,22 @@ const FlipCardWithDetails = ({ card }) => {
         <div className="flip-card-front">
           <div className="card-info">
             <h2 className="card-title">{card.name}</h2>
-              <div className="rating-stars">
-                {Array.from({ length: 5 }, (_, i) => {
-                  const full = i + 1 <= Math.floor(card.rating);
-                  const half = i + 1 > card.rating && i < card.rating;
+            <div className="rating-stars">
+              {Array.from({ length: 5 }, (_, i) => {
+                const full = i + 1 <= Math.floor(card.rating);
+                const half = i + 1 > card.rating && i < card.rating;
 
-                  return (
-                    <span className="star" key={i}>
-                      {full ? "★" : half ? "⯪" : "☆"}
-                    </span>
-                  );
-                })}
-                <span className="rating-text">{card.rating.toFixed(1)} Ratehub rated</span>
-              </div>
+                return (
+                  <span className="star" key={i}>
+                    {full ? "★" : half ? "⯪" : "☆"}
+                  </span>
+                );
+              })}
+              <span className="rating-text">{card.rating.toFixed(1)} Rating</span>
+            </div>
             {card.featured && (
-            <span className="best-tag">Best for {card.category} Points</span>
-            )}            
+              <span className="best-tag">Best for {card.category} Points</span>
+            )}
             <div className="highlight">
               <span>First Year Reward</span>
               <h3>${card.yearlyCost}/yr</h3>
@@ -72,8 +72,14 @@ const FlipCardWithDetails = ({ card }) => {
           <div className="card-image-actions">
             <img src={card.imageUrl} alt={card.name} />
             <div className="button-row">
-              <a className="btn-primary" href={card.websiteUrl} target="_blank"
-                rel="noopener noreferrer">Go to Site</a>
+              <a
+                className="btn-primary"
+                href={card.websiteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Go to Site
+              </a>
               <button
                 className="btn-secondary"
                 onClick={() => setFlipped(true)}
@@ -88,7 +94,7 @@ const FlipCardWithDetails = ({ card }) => {
         <div className="flip-card-back">
           <h2 className="section-title">Perks of {card.name}</h2>
 
-          {/* ⬇️ Perks Table with Scroll Wrapper */}
+          {/* ⬇️ Perks Table */}
           <div className="perks-table-wrapper">
             <table className="perks-table">
               <thead>
@@ -119,7 +125,7 @@ const FlipCardWithDetails = ({ card }) => {
             <h3 className="sub-title">Pros</h3>
             <ul>
               {pros.length > 0 ? (
-                pros.map((pro, idx) => <li key={idx}>{pro}</li>)
+                pros.map((pro, idx) => <li key={idx}>{pro.description}</li>)
               ) : (
                 <li>Loading pros...</li>
               )}
@@ -128,7 +134,7 @@ const FlipCardWithDetails = ({ card }) => {
             <h3 className="sub-title">Cons</h3>
             <ul>
               {cons.length > 0 ? (
-                cons.map((con, idx) => <li key={idx}>{con}</li>)
+                cons.map((con, idx) => <li key={idx}>{con.description}</li>)
               ) : (
                 <li>Loading cons...</li>
               )}

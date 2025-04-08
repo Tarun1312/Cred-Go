@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FlipCard from "./FlipCard";
 import "../styles/CreditCardComparison.css";
 import axios from "axios";
@@ -14,7 +14,6 @@ const CardSlot = ({ selectedCard, index, onSelectCard }) => {
         const response = await axios.get(
           `http://localhost:8081/api/cards/search?name=${value}`
         );
-
         const results = Array.isArray(response.data)
           ? response.data
           : [response.data];
@@ -29,38 +28,39 @@ const CardSlot = ({ selectedCard, index, onSelectCard }) => {
 
   const handleCardSelect = (card) => {
     onSelectCard(index, card);
-    setQuery(card.name); // Set selected name
-    setSearchResults([]); // Hide dropdown
+    setQuery(card.name);
+    setSearchResults([]);
   };
 
   return (
-    <div className="card-slot" style={{ position: "relative" }}>
+    <div className="card-slot">
       <p>Select a credit card for comparison</p>
-      <input
-        className="search-input"
-        type="text"
-        placeholder="Search credit card..."
-        value={query}
-        onChange={(e) => handleSearch(e.target.value)}
-      />
-      {searchResults.length > 0 && (
-        <ul className="search-suggestions">
-          {searchResults.map((card) => (
-            <li key={card.id} onClick={() => handleCardSelect(card)}>
-              {card.name}
-            </li>
-          ))}
-        </ul>
-      )}
-
+      <div className="search-wrapper">
+        <input
+          className="search-input"
+          type="text"
+          placeholder="Search credit card..."
+          value={query}
+          onChange={(e) => handleSearch(e.target.value)}
+        />
+        {searchResults.length > 0 && (
+          <ul className="search-suggestions">
+            {searchResults.map((card) => (
+              <li key={card.id} onClick={() => handleCardSelect(card)}>
+                {card.name}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
       <FlipCard card={selectedCard} />
-
     </div>
   );
 };
 
 const CardComparison = () => {
   const [selectedCards, setSelectedCards] = useState([null, null, null]);
+  const [perksData, setPerksData] = useState({});
 
   const handleSelectCard = (index, card) => {
     const updatedCards = [...selectedCards];
@@ -68,9 +68,33 @@ const CardComparison = () => {
     setSelectedCards(updatedCards);
   };
 
+  // Fetch perks for selected cards
+  useEffect(() => {
+    const fetchPerks = async () => {
+      const selected = selectedCards.filter(Boolean);
+      if (selected.length === 0) return;
+
+      try {
+        const response = await axios.post(
+          "http://localhost:8081/api/perks/comparison",
+          { cardIds: selected.map((card) => card.id) }
+        );
+        setPerksData(response.data);
+      } catch (error) {
+        console.error("Error fetching perks data:", error);
+      }
+    };
+
+    fetchPerks();
+  }, [selectedCards]);
+
+  const nonEmptyCards = selectedCards.filter(Boolean);
+
   return (
     <div className="comparison-container">
       <h2 className="comparison-title">Compare Credit Cards</h2>
+      <p>Select up to 3 cards to compare</p>
+
       <div className="comparison-grid">
         {selectedCards.map((card, idx) => (
           <CardSlot
